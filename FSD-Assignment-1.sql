@@ -1,5 +1,6 @@
 create database fsd_hex_may_25;
  use fsd_hex_may_25;
+ 
 create table book(
 id int primary key auto_increment,
 title varchar(255) not null,
