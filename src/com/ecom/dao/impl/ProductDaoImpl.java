@@ -19,7 +19,7 @@ public class ProductDaoImpl implements ProductDao{
 	
 	DBUtility db = new DBUtility();
 	@Override
-	public void insert(Product product, int categoryId) {
+	public void insert(Product product) {
 		
 			Connection con = db.connect();
 			String sql = "insert into product values (?,?,?,?,?)";
@@ -29,7 +29,7 @@ public class ProductDaoImpl implements ProductDao{
 				pstmt.setString(2, product.getTitle());
 				pstmt.setDouble(3, product.getPrice());
 				pstmt.setString(4, product.getDescription());
-				pstmt.setInt(5, categoryId);
+				pstmt.setInt(5, product.getCategory().getId());
 				pstmt.executeUpdate();
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
@@ -60,6 +60,9 @@ public class ProductDaoImpl implements ProductDao{
 					 product.setCategory(category);
 					 list.add(product);
 					 
+				 }
+				 if(list.isEmpty()) {
+					 throw new InvalidIdException("Invalid Category ID : No products found");
 				 }
 			 }catch(SQLException e) {
 				 System.out.println(e.getMessage());

@@ -7,7 +7,7 @@ import com.ecom.exception.InvalidIdException;
 import com.ecom.model.Product;
 
 public interface ProductDao {
-	void insert(Product product,int categoryId);
+	void insert(Product product);
 	List<Product> getByCategoryId(int categoryId) throws InvalidIdException;
 	Product getById(int id) throws InvalidIdException;
 	

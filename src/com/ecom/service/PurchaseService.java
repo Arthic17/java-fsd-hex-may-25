@@ -22,8 +22,10 @@ public class PurchaseService {
 		purchase.setCustomer(customer);
 		Product product =  productDao.getById(product_id); 
 		purchase.setProduct(product);
+		
 		System.out.println("Do you have any coupon?(YES/NO) ");
 		String ans = sc.next();
+		
 		if(ans.equals("YES")) {
 			System.out.println("Enter the coupon code ");
 			String couponCode=sc.next().toUpperCase();
@@ -31,7 +33,8 @@ public class PurchaseService {
 			double discount=(double)coupon.getDiscount();
 			System.out.println("Discount = " + discount);
 			double discountedPrice = product.getPrice()-(product.getPrice()*(discount/100)) ;
-			System.out.println("After Discount, Price is " + discountedPrice);
+			System.out.println("Actual Product Price is " + product.getPrice());
+			System.out.println("After Discount Price is " + discountedPrice);
 			purchase.setCoupon(coupon);
 			purchase.setAmount_paid(discountedPrice);
 			
