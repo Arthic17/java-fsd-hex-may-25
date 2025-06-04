@@ -1,0 +1,10 @@
+# Maven target directory (build output)
+target/
+
+# Logs
+*.log
+
+# Eclipse files
+.project
+.classpath
+.settings/
